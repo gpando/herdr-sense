@@ -1,0 +1,14 @@
+[Unit]
+Description=Herdr agent status on Sense HAT
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+# Change to a dedicated account in the video group for least privilege.
+User=root
+ExecStart=/usr/local/bin/herdr-sense -broker=<HOST:PORT>
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
